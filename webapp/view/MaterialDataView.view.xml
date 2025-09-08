@@ -1,17 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m"
-  xmlns:layout="sap.ui.layout"
-  xmlns:form="sap.ui.layout.form"
-  xmlns:core="sap.ui.core"
-  xmlns:richtexteditor="sap.ui.richtexteditor"
-  xmlns:viz="sap.viz.ui5"
-  controllerName="preview.app.controller.MaterialDataView"
-  displayBlock="true">
-  <Page title="MaterialDataView" enableScrolling="true">
-    <content>
-      <Title id="title_7mxt7odz" text="SAP"/>
-      <Text id="RootLayout"/>
-    </content>
-  </Page>
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:layout="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	controllerName="converted.materialdataview.controller.MaterialDataView"
+	displayBlock="true"
+          xmlns:commons="sap.ui.commons">
+	<Page title="Material Data View" enableScrolling="true">
+		<content>
+			<Title text="SAP" level="H1" class="sapUiTinyMarginBottom"/>
+			<layout:Grid id="RootLayout" width="100%" columns="2">
+				<layout:content>
+					<Select id="mainSearchDropdown" width="150px" value="{mockData>/mainSearchValue}">
+						{/* Add select items here */}
+					</Select>
+					<Button id="moreButton" text="More" type="Transparent"/>
+					<Panel headerText="Material Data" class="sapUiSmallMarginTop">
+						<layout:Grid defaultSpan="L2 M12 S12" columns="2" class="sapUiSmallMargin">
+							<layout:content>
+								<Label text="Material NUMBER:"/>
+								<Input id="inputMaterialNumber" value="{mockData>/materialNumber}" width="200px"/>
+								<Button id="buttonSearchMaterial" icon="sap-icon://search" tooltip="Search Material" press="onActionSearchMaterial"/>
+								<Label text="Created On:"/>
+								<DatePicker id="inputCreatedOn" value="{mockData>/createdOn}" width="100px"/>
+								<Label text="Created Time:"/>
+								<TimePicker id="inputCreatedTime" value="{mockData>/createdTime}" width="100px"/>
+								<CheckBox id="checkbox1" text="CHECKBOX 1" selected="{mockData>/checkbox1Selected}" press="onActionSelectCheckbox1"/>
+								<Label text="Created By:"/>
+								<Input id="inputCreatedBy" value="{mockData>/createdByUser}" width="150px"/>
+								<Label text="Material type:"/>
+								<Input id="inputMaterialType" value="{mockData>/materialType}" width="100px"/>
+								<CheckBox id="checkbox2" text="CHECKBOX 2" selected="{mockData>/checkbox2Selected}" press="onActionSelectCheckbox2"/>
+								<Label text="Material Group:"/>
+								<Input id="inputMaterialGroup" value="{mockData>/materialGroup}" width="150px"/>
+								<RadioButtonGroup id="radioGroup" selectedKey="{mockData>/selectedRadio}" select="onActionSelectRadio">
+									<RadioButton text="radio1" key="radio1"/>
+									<RadioButton text="radio2" key="radio2"/>
+									<RadioButton text="radio3" key="radio3"/>
+								</RadioButtonGroup>
+							</layout:content>
+						</layout:Grid>
+					</Panel>
+					<layout:Grid defaultSpan="L2 M12 S12" columns="2" class="sapUiSmallMarginTop">
+						<layout:content>
+							<Button id="getdataButton" text="GET DATA" press="onActionGetData"/>
+							<Button id="exitButton" text="EXIT" press="onActionExit"/>
+						</layout:content>
+					</layout:Grid>
+					{/* MessageArea not used in this optimized version */}
+				</layout:content>
+			</layout:Grid>
+		</content>
+	</Page>
 </mvc:View>

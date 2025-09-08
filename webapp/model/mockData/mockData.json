@@ -1,0 +1,12 @@
+{
+  "mainSearchValue": "",
+  "materialNumber": "",
+  "createdOn": "2024-03-15",
+  "createdTime": "14:30:00",
+  "createdByUser": "John Doe",
+  "materialType": "Raw Material",
+  "materialGroup": "Group A",
+  "checkbox1Selected": false,
+  "checkbox2Selected": false,
+  "selectedRadio": "radio1"
+}
