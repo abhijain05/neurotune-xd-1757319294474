@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebDynpro xmlns="http://www.sap.com/wd/webdynpro">
+  <View name="MaterialDataView">
+    <Title>SAP</Title>
+    <Layout type="GridLayout" id="RootLayout">
+      <Row>
+        <Cell colSpan="2">
+          <TransparentContainer id="topToolbarContainer">
+            <Layout type="FlowLayout" id="topToolbarLayout"/>
+            <DropDownByIndex id="mainSearchDropdown" width="150px" value="{/mainSearchValue}"/>
+            <Button id="moreButton" text="More" type="Transparent"/>
+          </TransparentContainer>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell colSpan="2">
+          <Panel id="materialDataPanel" headerText="Material Data">
+            <Layout type="MatrixLayout" id="panelLayout" rowCount="7" colCount="4"/>
+            
+            <MatrixLayoutCell row="0" col="0">
+              <Label id="labelMaterialNumber" text="Material NUMBER:"/>
+            </MatrixLayoutCell>
+            <MatrixLayoutCell row="0" col="1">
+              <InputField id="inputMaterialNumber" value="{/materialNumber}" width="200px"/>
+            </MatrixLayoutCell>
+            <MatrixLayoutCell row="0" col="2">
+              <Button id="buttonSearchMaterial" imageSource="sap-icon://search" tooltip="Search Material" onAction="onActionSearchMaterial"/>
+            </MatrixLayoutCell>
+            
+            <MatrixLayoutCell row="1" col="0">
+              <Label id="labelCreatedOn" text="Created On:"/>
+            </MatrixLayoutCell>
+            <MatrixLayoutCell row="1" col="1">
+              <InputField id="inputCreatedOn" value="{/createdOn}" type="Date" width="100px"/>
+            </MatrixLayoutCell>
+            
+            <MatrixLayoutCell row="2" col="0">
+              <Label id="labelCreatedTime" text="Created Time:"/>
+            </MatrixLayoutCell>
+            <MatrixLayoutCell row="2" col="1">
+              <InputField id="inputCreatedTime" value="{/createdTime}" type="Time" width="100px"/>
+            </MatrixLayoutCell>
+            <MatrixLayoutCell row="2" col="3">
+              <CheckBox id="checkbox1" text="CHECKBOX 1" checked="{/checkbox1Selected}" onAction="onActionSelectCheckbox1"/>
+            </MatrixLayoutCell>
+
+            <MatrixLayoutCell row="3" col="0">
+              <Label id="labelCreatedBy" text="Created By:"/>
+            </MatrixLayoutCell>
+            <MatrixLayoutCell row="3" col="1">
+              <InputField id="inputCreatedBy" value="{/createdByUser}" width="150px"/>
+            </MatrixLayoutCell>
+
+            <MatrixLayoutCell row="4" col="0">
+              <Label id="labelMaterialType" text="Material type:"/>
+            </MatrixLayoutCell>
+            <MatrixLayoutCell row="4" col="1">
+              <InputField id="inputMaterialType" value="{/materialType}" width="100px"/>
+            </MatrixLayoutCell>
+            <MatrixLayoutCell row="4" col="3">
+              <CheckBox id="checkbox2" text="CHECKBOX 2" checked="{/checkbox2Selected}" onAction="onActionSelectCheckbox2"/>
+            </MatrixLayoutCell>
+
+            <MatrixLayoutCell row="5" col="0">
+              <Label id="labelMaterialGroup" text="Material Group:"/>
+            </MatrixLayoutCell>
+            <MatrixLayoutCell row="5" col="1">
+              <InputField id="inputMaterialGroup" value="{/materialGroup}" width="150px"/>
+            </MatrixLayoutCell>
+            
+            <MatrixLayoutCell row="6" colSpan="4">
+              <TransparentContainer id="radioGroupContainer">
+                <Layout type="FlowLayout" id="radioLayout"/>
+                <RadioButton id="radio1" text="radio1" key="radio1" selectedKey="{/selectedRadio}" onAction="onActionSelectRadio"/>
+                <RadioButton id="radio2" text="radio2" key="radio2" selectedKey="{/selectedRadio}" onAction="onActionSelectRadio"/>
+                <RadioButton id="radio3" text="radio3" key="radio3" selectedKey="{/selectedRadio}" onAction="onActionSelectRadio"/>
+              </TransparentContainer>
+            </MatrixLayoutCell>
+          </Panel>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell colSpan="2">
+          <TransparentContainer id="buttonContainer">
+            <Layout type="FlowLayout" id="buttonFlowLayout" horizontalAlignment="Center"/>
+            <Button id="getdataButton" text="GET DATA" onAction="onActionGetData"/>
+            <Button id="exitButton" text="EXIT" onAction="onActionExit"/>
+          </TransparentContainer>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell colSpan="2">
+          <MessageArea id="statusMessageArea"/>
+        </Cell>
+      </Row>
+    </Layout>
+  </View>
+  <Controller name="MaterialDataViewController">
+    <Context>
+      <Node name="Context" type="singleton">
+        <Attribute name="mainSearchValue" type="String" defaultValue=""/>
+        <Attribute name="materialNumber" type="String" defaultValue=""/>
+        <Attribute name="createdOn" type="Date" defaultValue="0000-00-00"/>
+        <Attribute name="createdTime" type="Time" defaultValue="PT00H00M00S"/>
+        <Attribute name="createdByUser" type="String" defaultValue=""/>
+        <Attribute name="materialType" type="String" defaultValue=""/>
+        <Attribute name="materialGroup" type="String" defaultValue=""/>
+        <Attribute name="checkbox1Selected" type="Boolean" defaultValue="false"/>
+        <Attribute name="checkbox2Selected" type="Boolean" defaultValue="false"/>
+        <Attribute name="selectedRadio" type="String" defaultValue="radio1"/>
+      </Node>
+    </Context>
+    <Methods>
+      <Method name="onActionGetData" signature="void onActionGetData()"/>
+      <Method name="onActionExit" signature="void onActionExit()"/>
+      <Method name="onActionSearchMaterial" signature="void onActionSearchMaterial()"/>
+      <Method name="onActionSelectCheckbox1" signature="void onActionSelectCheckbox1()"/>
+      <Method name="onActionSelectCheckbox2" signature="void onActionSelectCheckbox2()"/>
+      <Method name="onActionSelectRadio" signature="void onActionSelectRadio()"/>
+    </Methods>
+  </Controller>
+</WebDynpro>
